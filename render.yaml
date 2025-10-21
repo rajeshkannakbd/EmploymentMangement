@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: EmploymentManagement-Backend
+    env: node
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: server
+    buildCommand: yarn install
+    startCommand: node index.js
+    envVars:
+      - key: MONGO_URI
+        value: "mongodb+srv://Employee:Maoj12345678@cluster0.rrtmmmg.mongodb.net/"
+      - key: PORT
+        value: "3000"
+
+  - type: static
+    name: EmploymentManagement-Frontend
+    env: static
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: client
+    buildCommand: yarn install && yarn build
+    publishPath: build
